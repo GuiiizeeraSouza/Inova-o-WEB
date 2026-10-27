@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, Clock3, ExternalLink, Instagram, Facebook, MessageCircle, MapPin } from "lucide-react";
+import { Phone, Mail, Clock3, ExternalLink, Instagram, Facebook, MessageCircle, MapPin, Star } from "lucide-react";
 import logoGif from "@/assets/logo.gif";
 import { business, fullAddress, mapsUrl, whatsappLink } from "@/lib/site";
 
@@ -21,13 +21,13 @@ const serviceLinks = [
 ];
 
 interface FooterProps {
-  // Each business line has its own inbox
-  emailFor?: keyof typeof business.emails;
+  // Each business line has its own inbox and Google profile
+  line?: keyof typeof business.emails;
 }
 
-export default function Footer({ emailFor = "cars" }: FooterProps) {
+export default function Footer({ line = "cars" }: FooterProps) {
   const year = new Date().getFullYear();
-  const email = business.emails[emailFor];
+  const email = business.emails[line];
 
   return (
     <footer id="contato" className="bg-[#0A2540] text-white">
@@ -170,6 +170,19 @@ export default function Footer({ emailFor = "cars" }: FooterProps) {
                   className="text-sm text-white/45 hover:text-white transition-colors"
                 >
                   <address className="not-italic">{fullAddress}</address>
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-7 h-7 rounded-lg bg-blue-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Star className="w-3.5 h-3.5 text-blue-400" />
+                </div>
+                <a
+                  href={business.googleReviews[line]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white/45 hover:text-white transition-colors"
+                >
+                  Ver avaliações no Google
                 </a>
               </li>
               <li className="flex items-start gap-3">

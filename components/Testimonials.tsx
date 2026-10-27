@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, ArrowUpRight } from "lucide-react";
+import { business } from "@/lib/site";
 
 interface Testimonial {
   id: string;
@@ -128,6 +129,15 @@ export default function Testimonials() {
             <span className="font-extrabold text-[#0A2540] text-xl">4.9</span> de 5 estrelas
             baseado em mais de 303 avaliações no Google
           </p>
+          <a
+            href={business.googleReviews.cars}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-blue-200 bg-white text-sm font-semibold text-blue-700 shadow-sm hover:bg-blue-50 hover:scale-[1.03] transition-all duration-200"
+          >
+            Ver todas as avaliações no Google
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
         </motion.div>
       </div>
     </section>

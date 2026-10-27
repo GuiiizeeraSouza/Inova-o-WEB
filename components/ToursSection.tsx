@@ -6,7 +6,7 @@ import { MessageCircle, Star, CheckCheck, X } from "lucide-react";
 import Image from "next/image";
 import TourCard from "@/components/TourCard";
 import PurchasePortal from "@/components/PurchasePortal";
-import { whatsappLink } from "@/lib/site";
+import { business, whatsappLink } from "@/lib/site";
 import { tours, type Tour } from "@/lib/tours";
 
 const stats = [
@@ -78,19 +78,29 @@ export default function ToursSection() {
                 transition={{ duration: 0.65, delay: 0.24 }}
                 className="mt-8 flex flex-wrap gap-3"
               >
-                {stats.map((stat, index) => (
-                  <span
-                    key={stat}
-                    className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-3 py-2 text-sm text-blue-100"
-                  >
-                    {index === 1 ? (
+                {stats.map((stat, index) =>
+                  index === 1 ? (
+                    <a
+                      key={stat}
+                      href={business.googleReviews.tours}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Ver avaliações no Google"
+                      className="inline-flex items-center gap-2 rounded-xl border border-amber-200/30 bg-amber-300/10 px-3 py-2 text-sm text-blue-100 underline-offset-4 transition-colors hover:bg-amber-300/20 hover:underline"
+                    >
                       <Star className="h-4 w-4 text-amber-300" />
-                    ) : (
+                      {stat} no Google
+                    </a>
+                  ) : (
+                    <span
+                      key={stat}
+                      className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-3 py-2 text-sm text-blue-100"
+                    >
                       <CheckCheck className="h-4 w-4 text-cyan-200" />
-                    )}
-                    {stat}
-                  </span>
-                ))}
+                      {stat}
+                    </span>
+                  )
+                )}
               </motion.div>
             </div>
 

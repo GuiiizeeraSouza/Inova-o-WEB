@@ -34,6 +34,11 @@ export const business = {
     closes: "18:00",
   },
   purchaseSiteUrl: "https://www.inovacaofloripa.com.br/",
+  // Google results that show each business line's profile and reviews
+  googleReviews: {
+    cars: "https://www.google.com/search?q=inovacao+rent+a+car",
+    tours: "https://www.google.com/search?q=inovacao+floripa",
+  },
   social: {
     instagram: "https://www.instagram.com/inovacaofloripa/",
     facebook: "https://www.facebook.com/InovacaoRentACar",
