@@ -20,8 +20,14 @@ const serviceLinks = [
   { label: "Loja de passeios online", href: business.purchaseSiteUrl },
 ];
 
-export default function Footer() {
+interface FooterProps {
+  // Each business line has its own inbox
+  emailFor?: keyof typeof business.emails;
+}
+
+export default function Footer({ emailFor = "cars" }: FooterProps) {
   const year = new Date().getFullYear();
+  const email = business.emails[emailFor];
 
   return (
     <footer id="contato" className="bg-[#0A2540] text-white">
@@ -147,10 +153,10 @@ export default function Footer() {
                   <Mail className="w-3.5 h-3.5 text-blue-400" />
                 </div>
                 <a
-                  href={`mailto:${business.email}`}
+                  href={`mailto:${email}`}
                   className="text-sm text-white/45 hover:text-white transition-colors break-all"
                 >
-                  {business.email}
+                  {email}
                 </a>
               </li>
               <li className="flex items-start gap-3">

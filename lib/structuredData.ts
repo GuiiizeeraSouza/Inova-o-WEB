@@ -39,7 +39,7 @@ const sameAs = [
   business.purchaseSiteUrl,
 ];
 
-function localBusiness(type: string, id: string, extra: JsonLdNode): JsonLdNode {
+function localBusiness(type: string, id: string, email: string, extra: JsonLdNode): JsonLdNode {
   return {
     "@type": type,
     "@id": id,
@@ -47,7 +47,7 @@ function localBusiness(type: string, id: string, extra: JsonLdNode): JsonLdNode 
     alternateName: business.alternateNames,
     parentOrganization: { "@id": ids.organization },
     telephone: business.phoneE164,
-    email: business.email,
+    email,
     address: postalAddress,
     hasMap: mapsUrl,
     openingHoursSpecification,
@@ -75,7 +75,7 @@ const organization: JsonLdNode = {
   url: SITE_URL,
   logo: absoluteUrl("/icon"),
   foundingDate: business.foundingYear,
-  email: business.email,
+  email: business.emails.cars,
   telephone: business.phoneE164,
   address: postalAddress,
   sameAs,
@@ -121,7 +121,7 @@ export function homeJsonLd(page: { title: string; description: string; faq: FaqI
     "@graph": [
       website,
       organization,
-      localBusiness("AutoRental", ids.carRental, {
+      localBusiness("AutoRental", ids.carRental, business.emails.cars, {
         url,
         description: page.description,
         image: absoluteUrl("/opengraph-image"),
@@ -179,7 +179,7 @@ export function toursJsonLd(page: {
     "@graph": [
       website,
       organization,
-      localBusiness("TravelAgency", ids.travelAgency, {
+      localBusiness("TravelAgency", ids.travelAgency, business.emails.tours, {
         url,
         description: page.description,
         image: absoluteUrl("/passeios/opengraph-image"),

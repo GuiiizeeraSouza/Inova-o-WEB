@@ -13,25 +13,25 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    id: "jaqueliny-correa",
-    name: "Jaqueliny Correa",
+    id: "sergio-portela",
+    name: "Sergio Portela",
     location: "Google Avaliações",
     rating: 5,
-    text: "Eu e meu marido fomos dia 06/05/25 com essa empresa, fazer a excursão para o Beto Carreiro e nossa experiência foi incrível. Van limpa, nova e confortável. Ar condicionado ligado, em temperatura agradável, motorista bem educado, gentil e dirigiu com cautela e segurança. Nota mil, recomendamos para todo mundo!!!",
+    text: "Olá, se você precisar de um carro em Florianópolis, não hesite nem por um segundo. Consegui um carro praticamente novo e, o mais importante, sem nenhuma surpresa. Você já deve ter ouvido falar de outras locadoras que inventam taxas, mas não aqui. A Paula é fantástica. Com certeza alugarei com vocês novamente.",
   },
   {
-    id: "susanna-salem",
-    name: "SUSANNA SALEM",
+    id: "manuel-lopes",
+    name: "Manuel Lopes",
     location: "Google Avaliações",
     rating: 5,
-    text: "Meus filhos amaram, eles foram sozinhos com vcs, muito obrigado!! Saíram no horário certinho, a vam muito boa, o motorista muito cuidadoso que os meninos me disseram!! Eu tava com receio, somos do Maranhão e não conheço nada aí na cidade de vcs, muito obrigado eu super indico e vamos novamente nas próximas férias!! Fiz tudo aqui do Maranhão e deu tudo certo, paguei pelo link e deu certo. Obrigado.",
+    text: "Aluguei um carro com a Inovação e fiquei muito satisfeito. Tanto o atendimento pelo zap e pessoalmente foram ótimos. Profissionais e eficientes. Carro novo e bem cuidado. Recomendo para quem precisar em Florianópolis.",
   },
   {
-    id: "rafaela-garcia-deitos",
-    name: "Rafaela Garcia Deitos",
+    id: "tatiane-pereira",
+    name: "Tatiane Pereira",
     location: "Google Avaliações",
     rating: 5,
-    text: "Estava procurando uma agencia para poder ir ao Beto Carrero, e encontrei a Inovação pela internet mesmo, entrei em contato e imediatamente fui super bem atendida. Fiz a compra do transporte e passaportes para entrada com eles. Marcaram num ponto bem próximo a minha casa e chegaram pontualmente no horário combinado. Pegamos uma Van bem limpa e segura, com um motorista super educado e atencioso, marcamos o horário de retorno e voltamos no horário combinado. Indico com certeza!",
+    text: "Muito bom alugar com a inovação, preço acessível e justo, carro veio limpinho, atendente Lucas nos atendeu e tirou todas nossas dúvidas, quando voltar em floripa, alugarei novamente lá, indico a todos.",
   },
 ];
 

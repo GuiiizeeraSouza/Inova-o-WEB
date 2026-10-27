@@ -84,7 +84,7 @@ export default function PasseiosPage() {
         <TourCTA />
       </main>
 
-      <Footer />
+      <Footer emailFor="tours" />
     </>
   );
 }

@@ -1,12 +1,12 @@
 // Single source of truth for business data (NAP) used by the UI, metadata and structured data.
 // Keep it consistent with the Google Business Profile: search engines cross-check these values.
 
-const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000")
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.inovacaocarros.com.br"
 ).replace(/\/$/, "");
+
+// GA4 measurement ID ("G-XXXXXXXXXX"). Universal Analytics IDs ("UA-...") no longer collect data.
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
 
 export const business = {
   name: "Inovação Floripa",
@@ -15,7 +15,10 @@ export const business = {
   phoneDisplay: "(48) 99863-0435",
   phoneE164: "+5548998630435",
   whatsappNumber: "5548998630435",
-  email: "inovacaopasseios@gmail.com",
+  emails: {
+    cars: "inovacaoaluguelcarros@gmail.com",
+    tours: "inovacaopasseios@gmail.com",
+  },
   address: {
     street: "Estrada Dom João Becker, 145, Loja L2 (Shopping Barra Norte)",
     neighborhood: "Ingleses",

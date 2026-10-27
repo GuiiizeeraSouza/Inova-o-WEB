@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { SITE_URL, business } from "@/lib/site";
 import "./globals.css";
 
@@ -73,6 +74,7 @@ export default function RootLayout({
     <html lang="pt-BR" className={inter.variable}>
       <body className="font-sans bg-white text-[#0A2540] overflow-x-hidden">
         {children}
+        <GoogleAnalytics />
       </body>
     </html>
   );
