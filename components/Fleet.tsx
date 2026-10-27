@@ -6,8 +6,7 @@ import Image, { type StaticImageData } from "next/image";
 import golImg from "@/assets/carros/gol.png";
 import voyageImg from "@/assets/carros/voyage.png";
 import poloImg from "@/assets/carros/polo.png";
-
-const WHATSAPP_BASE = "https://wa.me/5511999999999?text=";
+import { whatsappLink } from "@/lib/site";
 
 interface Feature {
   Icon: React.ElementType;
@@ -85,10 +84,10 @@ export default function Fleet() {
             Frota disponível
           </span>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-[#0A2540]">
-            Nossa frota
+            Carros para alugar em Florianópolis
           </h2>
-          <p className="mt-4 text-gray-500 text-lg max-w-md mx-auto">
-            Veículos revisados e prontos para a sua próxima viagem
+          <p className="mt-4 text-gray-500 text-lg max-w-lg mx-auto">
+            Veículos revisados e prontos para explorar as praias da Ilha
           </p>
         </motion.div>
 
@@ -107,7 +106,7 @@ export default function Fleet() {
               <div className="relative h-52 overflow-hidden bg-gray-100">
                 <Image
                   src={car.image}
-                  alt={`${car.name} — Inovação Carros`}
+                  alt={`${car.name} para alugar em Florianópolis — Inovação Carros`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover group-hover:scale-[1.07] transition-transform duration-500"
@@ -146,9 +145,7 @@ export default function Fleet() {
                 </ul>
 
                 <a
-                  href={`${WHATSAPP_BASE}${encodeURIComponent(
-                    `Olá! Tenho interesse em alugar o ${car.name}.`
-                  )}`}
+                  href={whatsappLink(`Olá! Tenho interesse em alugar o ${car.name}.`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full flex items-center justify-center gap-2 py-3.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-100 shadow-lg shadow-blue-600/20"

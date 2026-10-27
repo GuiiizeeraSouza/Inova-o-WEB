@@ -2,79 +2,12 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { MessageCircle, ArrowRight, Star, CheckCheck, X } from "lucide-react";
+import { MessageCircle, Star, CheckCheck, X } from "lucide-react";
 import Image from "next/image";
 import TourCard from "@/components/TourCard";
-import betoImg from "@/assets/passeios/BetoCarreiro/beto.jpg";
-import bcImage from "@/assets/passeios/BC/bc.jpg";
-import campecheImage from "@/assets/passeios/Campeche/campeche.jpg";
-import blumenauImage from "@/assets/passeios/BlumenauPomerode/blumenau.jpg";
-import barcoImage from "@/assets/passeios/PasseioDeBarco/barcoPirata.png";
-import cavaloImage from "@/assets/passeios/PasseioDeCavalo/passeioCavalo.jpg";
-import transferImage from "@/assets/passeios/Transfer/Transfer.jpg";
-
-const tours = [
-  {
-    title: "Ilha do Campeche",
-    description: "Praias paradisíacas e natureza",
-    image: campecheImage.src,
-    details:
-      "Navegação até uma das ilhas mais bonitas da região, com mar cristalino e tempo livre para curtir praia e trilhas leves.",
-    duration: "Dia inteiro",
-    idealFor: "Casais e amantes de natureza",
-    includes: ["Transporte", "Orientação local", "Suporte no embarque"],
-  },
-  {
-    title: "Balneário Camboriú",
-    description: "Cidade turística e atrações",
-    image: bcImage.src,
-    details:
-      "Roteiro urbano com vista panorâmica, pontos icônicos e paradas estratégicas para fotos, compras e experiências gastronômicas.",
-    duration: "Turno ou dia completo",
-    idealFor: "Famílias e grupos",
-    includes: ["Transfer ida e volta", "Roteiro otimizado", "Suporte durante o passeio"],
-  },
-  {
-    title: "Blumenau e Pomerode",
-    description: "Cultura e gastronomia",
-    image: blumenauImage.src,
-    details:
-      "Imersão cultural com arquitetura típica, culinária alemã e experiências tradicionais nas duas cidades mais charmosas da rota.",
-    duration: "Dia inteiro",
-    idealFor: "Quem busca cultura e sabores",
-    includes: ["Transporte confortável", "Paradas planejadas", "Atendimento personalizado"],
-  },
-  {
-    title: "Passeio de Barco",
-    description: "Experiências marítimas",
-    image: barcoImage.src,
-    details:
-      "Passeio marítimo com visual incrível da costa e clima de aventura, ideal para quem quer viver Santa Catarina por outro ângulo.",
-    duration: "Meio período",
-    idealFor: "Aventureiros e grupos",
-    includes: ["Transfer local", "Auxílio de embarque", "Suporte completo"],
-  },
-  {
-    title: "Passeio a cavalo",
-    description: "Contato com a natureza",
-    image: cavaloImage.src,
-    details:
-      "Trilhas em meio à natureza com ritmo tranquilo e acompanhamento, excelente para relaxar e curtir paisagens naturais.",
-    duration: "Meio período",
-    idealFor: "Famílias e iniciantes",
-    includes: ["Transporte", "Acompanhamento", "Atendimento dedicado"],
-  },
-  {
-    title: "Transfer Aeroporto",
-    description: "Conforto e praticidade",
-    image: transferImage.src,
-    details:
-      "Serviço de transfer com pontualidade e conforto para chegada e saída, com foco total em praticidade e segurança.",
-    duration: "Sob demanda",
-    idealFor: "Viagens individuais e corporativas",
-    includes: ["Motorista profissional", "Bagagem assistida", "Suporte em tempo real"],
-  },
-];
+import PurchasePortal from "@/components/PurchasePortal";
+import { whatsappLink } from "@/lib/site";
+import { tours, type Tour } from "@/lib/tours";
 
 const stats = [
   "+1000 clientes atendidos",
@@ -82,15 +15,8 @@ const stats = [
   "Atendimento personalizado",
 ];
 
-const featuredTours = [
-  { label: "🎢 Beto Carrero", image: betoImg, alt: "Beto Carrero" },
-  { label: "🏝️ Ilha do Campeche", image: campecheImage, alt: "Ilha do Campeche" },
-  { label: "🌆 Balneário Camboriú", image: bcImage, alt: "Balneário Camboriú" },
-];
-
 export default function ToursSection() {
-  const [selectedTour, setSelectedTour] = useState(featuredTours[0]);
-  const [selectedExperience, setSelectedExperience] = useState<(typeof tours)[number] | null>(null);
+  const [selectedExperience, setSelectedExperience] = useState<Tour | null>(null);
 
   return (
     <>
@@ -105,7 +31,7 @@ export default function ToursSection() {
                 className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-4 py-1.5 text-sm text-cyan-100 mb-6"
               >
                 <span className="h-2 w-2 rounded-full bg-cyan-300" />
-                Passeios exclusivos
+                Passeios e excursões saindo de Florianópolis
               </motion.div>
 
               <motion.h1
@@ -114,7 +40,7 @@ export default function ToursSection() {
                 transition={{ duration: 0.65, delay: 0.05 }}
                 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.06] text-white"
               >
-                Transforme sua viagem com a{" "}
+                Passeios em Florianópolis com a{" "}
                 <span className="text-cyan-300">Inovação Floripa</span>
               </motion.h1>
 
@@ -124,8 +50,9 @@ export default function ToursSection() {
                 transition={{ duration: 0.65, delay: 0.12 }}
                 className="mt-6 max-w-xl text-lg text-blue-100/80"
               >
-                Passeios, excursões e experiências para aproveitar o melhor de Santa
-                Catarina.
+                Beto Carrero World, Ilha do Campeche, Balneário Camboriú, Blumenau,
+                passeio de barco e transfer do aeroporto: escolha sua experiência e
+                reserve online ou pelo WhatsApp.
               </motion.p>
 
               <motion.div
@@ -135,21 +62,12 @@ export default function ToursSection() {
                 className="mt-8 flex flex-col sm:flex-row gap-4"
               >
                 <a
-                  href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20solicitar%20or%C3%A7amento%20para%20passeios."
+                  href={whatsappLink("Olá! Quero saber mais sobre os passeios.")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-cyan-300 px-7 py-3.5 text-sm font-bold text-[#0A2540] shadow-xl shadow-cyan-200/35 transition-transform hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#25D366] px-7 py-3.5 text-sm font-bold text-white shadow-xl shadow-green-500/30 transition-transform hover:scale-[1.02]"
                 >
-                  Solicitar orçamento
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-                <a
-                  href="https://wa.me/5511999999999"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/20"
-                >
-                  <MessageCircle className="h-4 w-4 text-green-300" />
+                  <MessageCircle className="h-4 w-4" />
                   Falar no WhatsApp
                 </a>
               </motion.div>
@@ -176,70 +94,7 @@ export default function ToursSection() {
               </motion.div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 26 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.12 }}
-              className="relative"
-            >
-              <div className="absolute -top-10 left-1/2 h-28 w-72 -translate-x-1/2 rounded-full bg-cyan-300/35 blur-3xl" />
-
-              <motion.div
-                animate={{ y: [-8, 10, -8] }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                className="relative h-[380px] sm:h-[460px] overflow-hidden rounded-[2rem] border border-white/20 bg-gradient-to-br from-[#0f3c75]/75 via-[#0b2a59]/80 to-[#072247]/90 shadow-[0_25px_90px_rgba(5,17,48,0.55)]"
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(70,220,255,0.35),transparent_65%)]" />
-                <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(255,255,255,0.12),rgba(255,255,255,0.02)_40%,rgba(5,20,40,0.4))]" />
-
-                <motion.div
-                  key={selectedTour.label}
-                  initial={{ opacity: 0.35, scale: 0.985, y: -6 }}
-                  animate={{ opacity: 1, scale: 1, y: [-6, 8, -6] }}
-                  transition={{
-                    opacity: { duration: 0.35, ease: "easeOut" },
-                    scale: { duration: 0.35, ease: "easeOut" },
-                    y: { duration: 8, repeat: Infinity, ease: "easeInOut" },
-                  }}
-                  className="absolute inset-x-6 bottom-8 top-12"
-                >
-                  <Image
-                    src={selectedTour.image}
-                    alt={selectedTour.alt}
-                    fill
-                    sizes="(max-width: 768px) 85vw, (max-width: 1280px) 44vw, 520px"
-                    className="rounded-2xl object-cover object-center drop-shadow-[0_20px_40px_rgba(0,0,0,0.55)]"
-                    priority
-                  />
-                </motion.div>
-
-                <div className="absolute inset-x-14 bottom-5 h-10 rounded-full bg-cyan-100/20 blur-2xl" />
-              </motion.div>
-
-              <div className="absolute -bottom-5 left-4 right-4 md:-right-8 md:left-auto md:w-64 grid gap-3">
-                {featuredTours.map((tour, index) => (
-                  <motion.div
-                    key={tour.label}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 + index * 0.08 }}
-                    className="rounded-2xl"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setSelectedTour(tour)}
-                      className={`w-full rounded-2xl border px-4 py-3 text-left text-sm font-semibold backdrop-blur-md transition-colors ${
-                        selectedTour.label === tour.label
-                          ? "border-cyan-200/70 bg-cyan-200/20 text-white"
-                          : "border-white/20 bg-[#08254b]/75 text-white hover:bg-[#0b2f5d]/85"
-                      }`}
-                    >
-                      {tour.label}
-                    </button>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+            <PurchasePortal />
           </div>
         </div>
       </section>
@@ -253,7 +108,7 @@ export default function ToursSection() {
             transition={{ duration: 0.55 }}
             className="text-3xl sm:text-4xl font-bold text-white mb-8"
           >
-            Mais experiências para você
+            Passeios e excursões em Santa Catarina
           </motion.h2>
 
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -286,7 +141,7 @@ export default function ToursSection() {
                       : "opacity-90 hover:opacity-100"
                   }`}
                 >
-                  <TourCard title={tour.title} description={tour.description} image={tour.image} />
+                  <TourCard title={tour.title} description={tour.description} image={tour.image} imageAlt={tour.imageAlt} />
                 </motion.div>
               </div>
             ))}
@@ -326,7 +181,7 @@ export default function ToursSection() {
                 <div className="relative min-h-[260px] lg:min-h-[520px]">
                   <Image
                     src={selectedExperience.image}
-                    alt={selectedExperience.title}
+                    alt={selectedExperience.imageAlt}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover object-center"
@@ -363,7 +218,7 @@ export default function ToursSection() {
                   </ul>
 
                   <a
-                    href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20mais%20detalhes%20sobre%20esse%20passeio."
+                    href={whatsappLink(`Olá! Quero mais detalhes sobre o passeio ${selectedExperience.title}.`)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center rounded-xl bg-cyan-300 px-5 py-3 text-sm font-bold text-[#0A2540] transition-transform hover:scale-[1.02]"

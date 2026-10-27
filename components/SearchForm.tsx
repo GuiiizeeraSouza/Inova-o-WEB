@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { fullAddress } from "@/lib/site";
 
 export default function SearchForm() {
   return (
@@ -13,19 +14,18 @@ export default function SearchForm() {
           className="bg-white rounded-3xl shadow-2xl shadow-gray-300/40 p-6 lg:p-8 border border-gray-100"
         >
           <p className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-4">
-            Localizacao da loja
+            Localização da loja
           </p>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0A2540] mb-3">
             Venha nos visitar no Shopping Barra Norte
           </h2>
-          <p className="text-gray-600 mb-6 leading-relaxed">
-            Estrada Dom Joao Becker 145 L2 (Shopping Barra Norte), Ingleses,
-            Florianopolis - SC, CEP 88058-600
-          </p>
+          <address className="not-italic text-gray-600 mb-6 leading-relaxed">
+            Inovação Floripa · {fullAddress}
+          </address>
 
           <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
             <iframe
-              title="Localizacao da loja Inovacao Carros"
+              title="Localização da loja Inovacao Carros"
               src="https://www.google.com/maps?q=Estrada+Dom+Joao+Becker+145+L2,+Ingleses,+Florianopolis+-+SC,+88058-600&output=embed"
               width="100%"
               height="360"

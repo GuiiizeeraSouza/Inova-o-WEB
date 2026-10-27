@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, MessageCircle, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import logoGif from "@/assets/logo.gif";
 import logoEscuraGif from "@/assets/logoEscura.gif";
+import { whatsappLink } from "@/lib/site";
 
 const homeNavLinks = [
   { href: "/#inicio", label: "Início" },
@@ -25,8 +26,7 @@ const toursNavLinks = [
   { href: "/passeios#contato", label: "Contato" },
 ];
 
-const WHATSAPP_URL =
-  "https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.";
+const WHATSAPP_URL = whatsappLink("Olá! Gostaria de solicitar um orçamento.");
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -101,9 +101,10 @@ export default function Header() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-semibold px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-600/25 transition-all duration-200 hover:scale-105 active:scale-100"
+              className="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-lg shadow-green-500/25 transition-all duration-200 hover:scale-105 active:scale-100"
             >
-              Solicitar Orçamento
+              <MessageCircle className="w-4 h-4" />
+              WhatsApp
             </a>
           </div>
 
@@ -172,9 +173,10 @@ export default function Header() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMenuOpen(false)}
-                  className="text-sm font-semibold py-3 rounded-xl bg-blue-600 text-white text-center hover:bg-blue-700 transition-colors"
+                  className="inline-flex items-center justify-center gap-2 text-sm font-semibold py-3 rounded-xl bg-[#25D366] text-white hover:bg-[#20bd5a] transition-colors"
                 >
-                  Solicitar Orçamento
+                  <MessageCircle className="w-4 h-4" />
+                  Falar no WhatsApp
                 </a>
               </div>
             </div>

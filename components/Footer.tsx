@@ -1,20 +1,23 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, Clock3, ExternalLink, Instagram, Facebook, MessageCircle } from "lucide-react";
+import { Phone, Mail, Clock3, ExternalLink, Instagram, Facebook, MessageCircle, MapPin } from "lucide-react";
 import logoGif from "@/assets/logo.gif";
+import { business, fullAddress, mapsUrl, whatsappLink } from "@/lib/site";
 
 const companyLinks = [
-  { label: "Sobre nós", href: "#" },
-  { label: "Nossa frota", href: "#frota" },
-  { label: "Como funciona", href: "#como-funciona" },
-  { label: "Vantagens", href: "#vantagens" },
-  { label: "Contato", href: "#contato" },
+  { label: "Sobre nós", href: "/#vantagens" },
+  { label: "Nossa frota", href: "/#frota" },
+  { label: "Como funciona", href: "/#como-funciona" },
+  { label: "Perguntas frequentes", href: "/#perguntas-frequentes" },
+  { label: "Onde estamos", href: "/#contato" },
 ];
 
-const fleetLinks = [
-  { label: "Volkswagen Gol", href: "#frota" },
-  { label: "Volkswagen Voyage", href: "#frota" },
-  { label: "Volkswagen Polo", href: "#frota" },
+const serviceLinks = [
+  { label: "Aluguel de carros em Florianópolis", href: "/" },
+  { label: "Passeios em Florianópolis", href: "/passeios" },
+  { label: "Excursão ao Beto Carrero World", href: "/passeios#beto-carrero" },
+  { label: "Transfer Aeroporto Florianópolis", href: "/passeios#experiencias" },
+  { label: "Loja de passeios online", href: business.purchaseSiteUrl },
 ];
 
 export default function Footer() {
@@ -39,15 +42,15 @@ export default function Footer() {
             </div>
 
             <p className="text-white/45 text-sm leading-relaxed max-w-xs mb-7">
-              Locadora familiar com tradição e qualidade no atendimento. Sua
-              mobilidade é a nossa prioridade. Desde 2015 cuidando de você na
-              estrada.
+              Aluguel de carros, passeios e transfer em Florianópolis. Locadora
+              familiar com tradição e qualidade no atendimento, cuidando de você
+              na estrada desde 2015.
             </p>
 
             {/* Social links */}
             <div className="flex gap-3">
               <a
-                href="https://www.instagram.com/inovacaofloripa/"
+                href={business.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -56,7 +59,7 @@ export default function Footer() {
                 <Instagram className="w-4 h-4" />
               </a>
               <a
-                href="https://www.facebook.com/InovacaoRentACar"
+                href={business.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -65,7 +68,7 @@ export default function Footer() {
                 <Facebook className="w-4 h-4" />
               </a>
               <a
-                href="https://wa.me/5511999999999"
+                href={whatsappLink()}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
@@ -98,10 +101,10 @@ export default function Footer() {
           {/* Fleet links */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest text-white/50 mb-5">
-              Nossa Frota
+              Serviços
             </h4>
             <ul className="space-y-3">
-              {fleetLinks.map(({ label, href }) => (
+              {serviceLinks.map(({ label, href }) => (
                 <li key={label}>
                   <Link
                     href={href}
@@ -125,29 +128,42 @@ export default function Footer() {
                   <Phone className="w-3.5 h-3.5 text-blue-400" />
                 </div>
                 <a
-                  href="https://wa.me/5548998630435"
+                  href={whatsappLink()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-white/45 hover:text-white transition-colors"
                 >
-                  (48) 998630435 wpp
+                  {business.phoneDisplay} (WhatsApp)
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-7 h-7 rounded-lg bg-blue-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <Clock3 className="w-3.5 h-3.5 text-blue-400" />
                 </div>
-                <span className="text-sm text-white/45">Seg a Sab 09:00 ás 18:00</span>
+                <span className="text-sm text-white/45">{business.openingHours.label}</span>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-7 h-7 rounded-lg bg-blue-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <Mail className="w-3.5 h-3.5 text-blue-400" />
                 </div>
                 <a
-                  href="mailto:inovacaopasseios@gmail.com"
+                  href={`mailto:${business.email}`}
                   className="text-sm text-white/45 hover:text-white transition-colors break-all"
                 >
-                  inovacaopasseios@gmail.com
+                  {business.email}
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-7 h-7 rounded-lg bg-blue-600/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <MapPin className="w-3.5 h-3.5 text-blue-400" />
+                </div>
+                <a
+                  href={mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white/45 hover:text-white transition-colors"
+                >
+                  <address className="not-italic">{fullAddress}</address>
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -155,7 +171,7 @@ export default function Footer() {
                   <ExternalLink className="w-3.5 h-3.5 text-blue-400" />
                 </div>
                 <a
-                  href="https://www.tripadvisor.com.br/Attraction_Review-g303576-d23071396-Reviews-Inovacao_Floripa-Florianopolis_State_of_Santa_Catarina.html"
+                  href={business.social.tripadvisor}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-white/45 hover:text-white transition-colors"
@@ -170,7 +186,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/8 py-7 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-white/25 text-sm text-center sm:text-left">
-            © {year} Inovação Carros. Todos os direitos reservados.
+            © {year} Inovação Floripa · Inovação Carros. Todos os direitos reservados.
           </p>
           <p className="text-white/25 text-sm">
             Feito com ♥ para você dirigir sem preocupações

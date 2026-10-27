@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import { MessageCircle, ArrowRight, Sparkles } from "lucide-react";
+import { whatsappLink } from "@/lib/site";
 
-const WHATSAPP_URL =
-  "https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20aluguel%20de%20ve%C3%ADculo.";
+const WHATSAPP_URL = whatsappLink("Olá! Gostaria de solicitar um orçamento para aluguel de veículo.");
 
 export default function CTA() {
   return (

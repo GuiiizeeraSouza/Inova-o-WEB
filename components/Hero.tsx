@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, MessageCircle, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { MessageCircle, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import Image, { type StaticImageData } from "next/image";
 
 import golImg from "@/assets/carros/gol.png";
 import poloImg from "@/assets/carros/polo.png";
 import voyageImg from "@/assets/carros/voyage.png";
+import { whatsappLink } from "@/lib/site";
 
-const WHATSAPP_URL =
-    "https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.";
+const WHATSAPP_URL = whatsappLink("Olá! Gostaria de solicitar um orçamento.");
 
 const highlights = [
     "Atendimento rápido",
@@ -77,7 +77,7 @@ export default function Hero() {
                             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-600/20 border border-blue-500/30 text-blue-300 text-sm font-medium mb-7"
                         >
                             <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                            Locadora de Veículos Premium
+                            Locadora de carros em Florianópolis
                         </motion.div>
 
                         {/* Heading */}
@@ -85,13 +85,13 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 32 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.1 }}
-                            className="text-5xl sm:text-6xl font-extrabold text-white leading-[1.1] tracking-tight mb-6"
+                            className="text-4xl sm:text-5xl xl:text-6xl font-extrabold text-white leading-[1.1] tracking-tight mb-6"
                         >
-                            Alugue seu carro com{" "}
+                            Aluguel de carros em{" "}
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-300">
-                                facilidade
+                                Florianópolis
                             </span>{" "}
-                            e segurança
+                            com facilidade e segurança
                         </motion.h1>
 
                         {/* Description */}
@@ -101,8 +101,9 @@ export default function Hero() {
                             transition={{ duration: 0.7, delay: 0.2 }}
                             className="text-lg text-white/65 leading-relaxed mb-9 max-w-lg"
                         >
-                            Carros revisados, atendimento rápido e planos flexíveis para você
-                            dirigir sem preocupações. Família Inovação Carros sempre ao seu lado.
+                            Carros revisados, retirada no Shopping Barra Norte, nos Ingleses, e
+                            atendimento rápido pelo WhatsApp para você aproveitar a Ilha da Magia
+                            sem preocupações. Família Inovação Carros sempre ao seu lado.
                         </motion.p>
 
                         {/* CTAs */}
@@ -116,18 +117,9 @@ export default function Hero() {
                                 href={WHATSAPP_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-2xl shadow-2xl shadow-blue-600/40 transition-all duration-300 hover:scale-[1.03] active:scale-100"
+                                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold rounded-2xl shadow-2xl shadow-green-500/30 transition-all duration-300 hover:scale-[1.03] active:scale-100"
                             >
-                                Solicitar Orçamento
-                                <ArrowRight className="w-4 h-4" />
-                            </a>
-                            <a
-                                href="https://wa.me/5511999999999"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-white/10 hover:bg-white/18 backdrop-blur-sm text-white font-bold rounded-2xl border border-white/20 transition-all duration-300 hover:scale-[1.03] active:scale-100"
-                            >
-                                <MessageCircle className="w-5 h-5 text-green-400" />
+                                <MessageCircle className="w-5 h-5" />
                                 Falar no WhatsApp
                             </a>
                         </motion.div>
@@ -211,7 +203,7 @@ export default function Hero() {
                             >
                                 <Image
                                     src={activeCar.image}
-                                    alt={`${activeCar.name} - Inovacao Carros`}
+                                    alt={`${activeCar.name} para aluguel em Florianópolis - Inovação Carros`}
                                     width={720}
                                     height={460}
                                     className="w-full h-auto drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)]"

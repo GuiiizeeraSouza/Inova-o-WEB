@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import { BadgeCheck, Ticket, CarFront, Headset } from "lucide-react";
+import Image from "next/image";
 import betoImage from "@/assets/passeios/BetoCarreiro/beto.jpg";
 import betoImageAlt from "@/assets/passeios/BetoCarreiro/beto2.jpg";
 import betoImageThird from "@/assets/passeios/BetoCarreiro/beto3.jpg";
+import { whatsappLink } from "@/lib/site";
 
 const highlights = [
   { label: "Transporte", icon: CarFront },
@@ -43,8 +45,14 @@ export default function FeaturedTour() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="space-y-5"
             >
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-200">
+                Excursão saindo de Florianópolis
+              </p>
               <h2 className="text-3xl sm:text-4xl font-black text-white">BETO CARRERO WORLD</h2>
-              <p className="text-white/80 text-lg">O maior destino de diversão para toda a família.</p>
+              <p className="text-white/80 text-lg">
+                Transporte de Florianópolis ao Beto Carrero World com ida e volta no mesmo dia.
+                O maior destino de diversão do Brasil para toda a família.
+              </p>
 
               <ul className="grid sm:grid-cols-2 gap-3">
                 {highlights.map((item) => (
@@ -56,7 +64,7 @@ export default function FeaturedTour() {
               </ul>
 
               <a
-                href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20reservar%20o%20passeio%20para%20o%20Beto%20Carrero."
+                href={whatsappLink("Olá! Quero reservar o passeio para o Beto Carrero.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-2xl bg-cyan-300 px-6 py-3 text-sm font-bold text-[#0A2540] shadow-lg shadow-cyan-200/40 transition-transform hover:scale-[1.02]"
@@ -74,13 +82,16 @@ export default function FeaturedTour() {
               whileHover={{ y: -14 }}
               className="relative"
             >
-              <div
-                className="h-[360px] md:h-[420px] rounded-3xl border border-white/25 bg-cover bg-center"
-                style={{
-                  backgroundImage:
-                    `linear-gradient(160deg, rgba(6,27,58,0.15), rgba(7,17,35,0.65)), url(${betoImage.src})`,
-                }}
-              />
+              <div className="relative h-[360px] md:h-[420px] overflow-hidden rounded-3xl border border-white/25">
+                <Image
+                  src={betoImage}
+                  alt="Beto Carrero World, excursão saindo de Florianópolis"
+                  fill
+                  sizes="(max-width: 1024px) 92vw, 560px"
+                  className="object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(6,27,58,0.15),rgba(7,17,35,0.65))]" />
+              </div>
 
               <div className="mt-4 grid grid-cols-3 gap-3">
                 {attractionThumbs.map((image, index) => (

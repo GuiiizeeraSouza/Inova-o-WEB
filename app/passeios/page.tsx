@@ -9,6 +9,8 @@ import ToursSection from "@/components/ToursSection";
 import FeaturedTour from "@/components/FeaturedTour";
 import TourSteps from "@/components/TourSteps";
 import TourCTA from "@/components/TourCTA";
+import FAQ from "@/components/FAQ";
+import { toursFaq } from "@/lib/faq";
 import firewhipPng from "@/assets/firewhip.png";
 
 const particles = [
@@ -72,6 +74,13 @@ export default function PasseiosPage() {
         <ToursSection />
         <FeaturedTour />
         <TourSteps />
+        <FAQ
+          items={toursFaq}
+          eyebrow="Dúvidas frequentes"
+          title="Perguntas sobre passeios em Florianópolis"
+          subtitle="Saiba como funcionam nossos passeios, excursões e transfers."
+          variant="dark"
+        />
         <TourCTA />
       </main>
 

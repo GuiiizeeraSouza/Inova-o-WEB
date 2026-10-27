@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 import ponteImage from "@/assets/passeios/ponte.jpg";
+import { whatsappLink } from "@/lib/site";
 
 export default function TourCTA() {
   return (
@@ -31,7 +32,7 @@ export default function TourCTA() {
             <p className="text-blue-100/80 mb-8">Solicite agora seu orçamento</p>
 
             <a
-              href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Quero%20solicitar%20or%C3%A7amento%20para%20os%20passeios."
+              href={whatsappLink("Olá! Quero solicitar orçamento para os passeios.")}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-2xl bg-[#25D366] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-green-500/30 transition-transform hover:scale-[1.03]"
